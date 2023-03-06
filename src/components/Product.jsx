@@ -34,7 +34,7 @@ function Product() {
         Api.post('/seller/category/' + id, {title_eng: nameEng, title_ru: nameRu, subitem_id: parseInt(digiid)}).then(r => console.log(r.data))
         setNameRu('')
         setNameEng('')
-
+        setTimeout(n => window.location.reload(), 1000)
         // window.location.reload()
     }
 
