@@ -58,11 +58,9 @@ function Client() {
                             <h3>Продукт: {i.category_name}  </h3>
                             <h3>Подтип: {i.subcategory_name}</h3>
                             <p >Ключи: {setLinks()} </p>
+                            <h3 style={{ fontSize: 20 }}>{`Дата: ${i.date_check}`} </h3>
                         </div>
 
-
-
-                        <h3 style={{ fontSize: 20 }}>{`Дата: ${i.date_check}`} </h3>
                     </>) : <></> }
                 
                 </Card>
