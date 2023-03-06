@@ -16,8 +16,9 @@ function Product() {
 
     const [ isChangingName, setIsChangingName ] = useState([0, false])
 
-    const [ newName, setNewName ] = useState('')
+    const [ newNameRU, setNewNameRU ] = useState('')
     const [ newSubitemId, setNewSubitemId ] = useState('')
+    const [ newNameEn, setNewNameEn ] = useState('')
 
 
     const { id } = useParams()
@@ -104,29 +105,21 @@ function Product() {
                 { subtypes ? subtypes.map(i => {
                     console.log(i)
                     return (
+
                         <Row style={{marginBottom: 20}} gutter={16}>
                             <Col span={8}>
                             </Col>
                             <Col span={8}>
                                 <Card
                                     style={{ width: '100%' }}
-                                    title={ (isChangingName[1] & (isChangingName[0] === i.id)) ? <> Название (RU): <Input onChange={(e) => setNewName(e.target.value)} value={newName} style={{ width: 150 }} />
-                                        <Button onClick={() => {
-                                        Api.patch(`seller/category/${id}/subcategory/${i.id}`, { title_ru: newName, subitem_id: parseInt(newSubitemId) }).then(r => console.log(r.data))
-
-                                        setIsChangingName([0, false])
-
-                                    }} ><CheckOutlined /></Button> </> : `${i.title_ru} - ${i.title_eng}`}
+                                    title={i.title_ru}
                                     extra={
                                         <>
                                             { (isChangingName[1] & (isChangingName[0] === i.id)) ? 
                                                 <Button onClick={() => {
                                                     setIsChangingName(false)
                                                 }} danger style={{ marginRight: 10 }}>Отмена</Button>
-
-
-                                            : 
-                                            
+                                            :
                                                 <Button onClick={() => {
                                                     setIsChangingName([i.id, true])
                                                 }} danger style={{ marginRight: 10 }}>Изменить</Button>
@@ -144,9 +137,21 @@ function Product() {
 
                                         </>
                                     }>
-                                    <p>{isChangingName[1] & isChangingName[0] === i.id ? <Input onChange={(e) => setNewSubitemId(e.target.value)} value={newSubitemId} style={{ width: 150 }} /> : `SubitemID: ${i.subitem_id}`}</p>
+                                    {(isChangingName[1] & (isChangingName[0] === i.id)) ?
+                                        <Button onClick={() => {
+                                            setTimeout(Api.patch(`seller/category/${id}/subcategory/${i.id}`, { title_ru: newNameRU, subitem_id: parseInt(newSubitemId) }).then(r => console.log(r.data)), 3000)
+                                            setIsChangingName([0, false])
+                                            window.location.reload()
+                                        }} >Обновить </Button> : ``}
+                                    <p>Название (RU): {isChangingName[1] & isChangingName[0] === i.id ? <Input placeholder={i.title_ru} onChange={(e) => setNewNameRU(e.target.value)} value={newNameRU} style={{ width: 150 }} />
+
+
+                                        : i.subitem_id}</p>
+                                    <p>Название (EN): {isChangingName[1] & isChangingName[0] === i.id ? <Input placeholder={i.title_eng} onChange={(e) => setNewNameEn(e.target.value)} value={newNameEn} style={{ width: 150 }} /> : i.title_eng}</p>
+                                    <p>SubItemID: {isChangingName[1] & isChangingName[0] === i.id ? <Input placeholder={i.subitem_id} onChange={(e) => setNewSubitemId(e.target.value)} value={newSubitemId} style={{ width: 150 }} /> : i.subitem_id}</p>
                                     <b>Ключи: {i.count_products}</b>
                                     <p>{`Дата: ${i.created_at.split('.')[0]}`}</p>
+
                                 </Card>
                             </Col>
                             <Col span={8}>
