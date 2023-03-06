@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Authorization from './Components/Authorization';
-import Client from './Components/Client';
-import Main from './Components/Main';
-import Product from './Components/Product';
-import Signup from './Components/Signup';
-import History from './Components/History';
-import Profile from './Components/Profile';
-import Keys from './Components/Keys';
-import Transaction from './Components/Transaction';
+import Authorization from './components/Authorization';
+import Client from './components/Client';
+import Main from './components/Main';
+import Product from './components/Product';
+import Signup from './components/Signup';
+import History from './components/History';
+import Profile from './components/Profile';
+import Keys from './components/Keys';
+import Transaction from './components/Transaction';
 import { Api } from './api/api';
 
 function App() {

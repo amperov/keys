@@ -15,7 +15,7 @@ function Authorization() {
             if (r.data.JWT) {
                 console.log(r.data)
                 localStorage.setItem('jwt', r.data.JWT)
-                navigate('/seller/products')
+                navigate('/')
                 window.location.reload();
             }
         }).catch(e => console.error(e))
@@ -45,4 +45,4 @@ function Authorization() {
     )
 }
 
-export default Authorization
+export default Authorization;

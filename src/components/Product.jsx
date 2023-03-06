@@ -110,12 +110,11 @@ function Product() {
                             <Col span={8}>
                                 <Card
                                     style={{ width: '100%' }}
-                                    title={ (isChangingName[1] & (isChangingName[0] === i.id)) ? <><Input onChange={(e) => setNewName(e.target.value)} value={newName} style={{ width: 150 }} /> <Button onClick={() => {
-                                        Api.patch(`seller/category/${id}/subcategory/${i.id}`, { title_ru: newName, subitem_id: newSubitemId })
-                                        console.log(id)
-                                        console.log(i.id)
+                                    title={ (isChangingName[1] & (isChangingName[0] === i.id)) ? <> Название (RU): <Input onChange={(e) => setNewName(e.target.value)} value={newName} style={{ width: 150 }} />
+                                        <Button onClick={() => {
+                                        Api.patch(`seller/category/${id}/subcategory/${i.id}`, { title_ru: newName, subitem_id: parseInt(newSubitemId) }).then(r => console.log(r.data))
+
                                         setIsChangingName([0, false])
-                                        window.location.reload();
 
                                     }} ><CheckOutlined /></Button> </> : `${i.title_ru} - ${i.title_eng}`}
                                     extra={
@@ -143,40 +142,11 @@ function Product() {
                                             
                                             <Link to={`/${id}/keys/${i.id}`}>Перейти</Link>
 
-                                            {/* <Button onClick={() => {
-                                                Api.delete(`/seller/products/${id}/subtypes/${i.subitem_id}`)
-                                            }} danger style={{ marginRight: 10 }}>Удалить</Button> */}
-                                            {/* { isAddingKey[0] && (isAddingKey[1] === i.subitem_id) ? <><Input style={{ width: 170 }} value={key} onChange={(e) => setKey(e.target.value)} placeholder='Введите через пробел' /> <Button type='primary' style={{ marginTop: 10, marginBottom: 10 }} onClick={() => setIsAddingKey([false, isAddingKey[1]])} danger>Отмена</Button> <Button type='primary' onClick={() => handleAddKey(i.subitem_id)} style={{ marginTop: 10, marginBottom: 10 }}>Добавить</Button> </> : <Button type='primary' onClick={() => setIsAddingKey([true, i.subitem_id])} ghost>Добавить</Button> } */}
                                         </>
-                                    }
-                                >
+                                    }>
                                     <p>{isChangingName[1] & isChangingName[0] === i.id ? <Input onChange={(e) => setNewSubitemId(e.target.value)} value={newSubitemId} style={{ width: 150 }} /> : `SubitemID: ${i.subitem_id}`}</p>
                                     <b>Ключи: {i.count_products}</b>
                                     <p>{`Дата: ${i.created_at.split('.')[0]}`}</p>
-                                    {/* { i.keys ? i.keys.map(k => <>
-                                        { isChangingKey[1] & isChangingKey[0] === k.key_id ? 
-                                            <>
-                                                <Input value={newKey} onChange={(e) => setNewKey(e.target.value)} style={{ marginTop: 10 }} placeholder='Изменить ключ' />
-                                                <Button onClick={() => {
-                                                    Api.patch(`/seller/products/${id}/subtypes/${i.subitem_id}/keys/${k.key_id}`, { key: newKey })
-                                                    window.location.reload();
-                                                }} style={{ marginRight: 10, marginTop: 10 }} size='small'><CheckOutlined /></Button>
-                                                <Button onClick={() => setIsChangingKey([0, false])} style={{ marginRight: 10, marginTop: 10 }} size='small'><CloseOutlined /></Button>
-                                            </>
-                                        :
-                                            <>
-                                                <p style={{ fontSize: 18 }}>• {k.key_content}</p>
-                                                <Button onClick={() => setIsChangingKey([k.key_id, true])} style={{ marginRight: 10 }} size='small'>Изменить</Button>
-                                            
-                                            </>
-                                        }
-                                        <Button onClick={() => {
-                                            Api.delete(`/seller/products/${id}/subtypes/${i.subitem_id}/keys/${k.key_id}`)
-                                            window.location.reload();
-
-                                        }} size='small' danger>Удалить</Button>
-                                    
-                                    </>) : <></> } */}
                                 </Card>
                             </Col>
                             <Col span={8}>
