@@ -106,7 +106,7 @@ function Keys() {
                                             setTimeout(n => window.location.reload(), 2000)
 
                                         }}>+</Button>
-                                    </> : i.content.split('\n').map(k => <p>{k}</p>)}
+                                    </> : i.content_key.split('\n').map(k => <p>{k}</p>)}
 
 
                                     <p>{`Дата: ${i.created_at.split('.')[0]}`}</p>

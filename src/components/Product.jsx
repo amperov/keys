@@ -146,7 +146,7 @@ function Product() {
                                     <p>Название (RU): {isChangingName[1] & isChangingName[0] === i.id ? <Input placeholder={i.title_ru} onChange={(e) => setNewNameRU(e.target.value)} value={newNameRU} style={{ width: 150 }} />
 
 
-                                        : i.subitem_id}</p>
+                                        : i.title_ru}</p>
                                     <p>Название (EN): {isChangingName[1] & isChangingName[0] === i.id ? <Input placeholder={i.title_eng} onChange={(e) => setNewNameEn(e.target.value)} value={newNameEn} style={{ width: 150 }} /> : i.title_eng}</p>
                                     <p>SubItemID: {isChangingName[1] & isChangingName[0] === i.id ? <Input placeholder={i.subitem_id} onChange={(e) => setNewSubitemId(e.target.value)} value={newSubitemId} style={{ width: 150 }} /> : i.subitem_id}</p>
                                     <b>Ключи: {i.count_products}</b>
