@@ -141,13 +141,13 @@ function Product() {
                                     <Row>
                                         <Col span={12}>
                                             <p style={{marginTop:0}}>Название (RU): {isChangingName[1] & isChangingName[0] === i.id ?
-                                                <Input placeholder={i.title_ru} onChange={(e) => setNewNameRU(e.target.value)} value={newNameRU} style={{ width: 150, margin:0 }} /> : i.title_ru}
+                                                <Input onClick={(e) => setNewNameRU(i.title_ru)} placeholder={i.title_ru} onChange={(e) => setNewNameRU(e.target.value)} value={newNameRU} style={{ width: 150, margin:0 }} /> : i.title_ru}
                                             </p>
                                             <p style={{marginTop:0}}>Название (EN): {isChangingName[1] & isChangingName[0] === i.id ?
-                                                <Input placeholder={i.title_eng} onChange={(e) => setNewNameEn(e.target.value)} value={newNameEn} style={{ width: 150, margin: 0 }} /> : i.title_eng}
+                                                <Input onClick={(e) => setNewNameEn(i.title_eng)}  placeholder={i.title_eng} onChange={(e) => setNewNameEn(e.target.value)} value={newNameEn} style={{ width: 150, margin: 0 }} /> : i.title_eng}
                                             </p>
                                             <p style={{marginTop:0}}>SubItemID: {isChangingName[1] & isChangingName[0] === i.id ?
-                                                <Input placeholder={i.subitem_id} onChange={(e) => setNewSubitemId(e.target.value)} value={newSubitemId} style={{ width: 150, marginLeft: 30 }} /> : i.subitem_id}
+                                                <Input onClick={(e) => setNewSubitemId(i.subitem_id)} placeholder={i.subitem_id} onChange={(e) => setNewSubitemId(e.target.value)} value={newSubitemId} style={{ width: 150, marginLeft: 30 }} /> : i.subitem_id}
                                             </p>
                                         </Col>
                                         <Col span={6}>

@@ -116,18 +116,18 @@ function Main() {
                                             
                                         </>}>
                                     <p>Название (RU): {isChangingName[1] & isChangingName[0] === i.id ?
-                                         <Input text={i.title_ru} value={newNameRU} onChange={(e) => setNewNameRU(e.target.value)} style={{ width: 250 }} />  : i.title_ru } </p>
+                                         <Input onClick={(e) => setNewNameRU(i.title_ru)} text={i.title_ru} value={newNameRU} onChange={(e) => setNewNameRU(e.target.value)} style={{ width: 250 }} />  : i.title_ru } </p>
 
                                     <p> Название (EN): {isChangingName[1] & isChangingName[0] === i.id ? <>
-                                        <Input onChange={(e) => setNewNameENG(e.target.value)} value={newNameEN} style={{ width: 250  }} />
+                                        <Input onClick={(e) => setNewNameENG(i.title_eng)} onChange={(e) => setNewNameENG(e.target.value)} value={newNameEN} style={{ width: 250  }} />
                                         </> : i.title_eng}</p>
 
                                     <p> Описание: {isChangingName[1] & isChangingName[0] === i.id ?
-                                        <Input onChange={(e) => setNewDescription(e.target.value)} value={newDescription} style={{ width: 250 }}/> : i.description}
+                                        <Input onClick={(e) => setNewDescription(i.description)} onChange={(e) => setNewDescription(e.target.value)} value={newDescription} style={{ width: 250 }}/> : i.description}
                                     </p>
 
                                     <p> Сообщение: {isChangingName[1] & isChangingName[0] === i.id ?
-                                        <TextArea onChange={(e) => setNewMessage(e.target.value)} value={newMessage} style={{ width: 250 }} /> : i.message}
+                                        <TextArea onClick={(e) => setNewMessage(i.message)} onChange={(e) => setNewMessage(e.target.value)} value={newMessage} style={{ width: 250 }} /> : i.message}
                                     </p>
                                     <div>
                                         {isChangingName[1] & isChangingName[0] === i.id ? <Button onClick={() => {

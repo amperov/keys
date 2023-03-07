@@ -32,7 +32,7 @@ function Transaction() {
                                           title={`${transaction.category_name} - ${transaction.subcategory_name}`}>
 
                         Ключ: { isChangingKey ? <> Ключ:
-                            <TextArea value={newKey} onChange={e => setNewKey(e.target.value)} style={{ marginBottom: 10, width: 500 }} placeholder={transaction.content_key} />
+                            <TextArea onClick={(e) => setNewKey(transaction.content_key)} value={newKey} onChange={e => setNewKey(e.target.value)} style={{ marginBottom: 10, width: 500 }} placeholder={transaction.content_key} />
                             <Button danger onClick={() => setIsChangingKey(false)} style={{ marginLeft: 10 }} type="primary">Отмена</Button></>  : transaction.content_key}
 
                             <Button onClick={() => isChangingKey ? handleChangeKey() : setIsChangingKey(true)} style={{ marginLeft: 10, marginRight: 10 }} type="primary">

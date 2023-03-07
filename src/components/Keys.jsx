@@ -97,7 +97,7 @@ function Keys() {
                                     }
                                 >
                                     Ключ: { isChangingKey[1] && isChangingKey[0] === i.id ? <>
-                                        <TextArea  autoSize onChange={e => setNewTitle(e.target.value) } value={newTitle} style={{ width: 200, height:100 }}  />
+                                        <TextArea  onClick={(e) => setNewTitle(i.content_key)} autoSize onChange={e => setNewTitle(e.target.value) } value={newTitle} style={{ width: 200, height:100 }}  />
                                         <Button onClick={() => setIsChangingKey([0, false])}>x</Button>
                                         <Button onClick={() => {
                                             setIsChangingKey([0, false])
