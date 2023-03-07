@@ -10,13 +10,10 @@ function Main() {
     const [ products, setProducts ] = useState([])
     const [ isAdding, setIsAdding ] = useState(false)
 
-    const [ sellerid, setSellerid ] = useState('')
-    const [ sellerkey, setSellerkey ] = useState('')
-
     useEffect(() => {
         Api.get('/seller/category').then(r => setProducts(r.data))
     }, [])
-    const [ isChangingSettings, setIsChangingSettings ] = useState(false)
+
 
     const [ nameRU, setNameRU ] = useState('')
     const [ nameENG, setNameENG ] = useState('')
@@ -51,19 +48,7 @@ function Main() {
         setIsAdding(false)
     }
 
-    const handleStartChangingSettings = () => {
-        setIsChangingSettings(true)
-    }
 
-    const handleStopChangingSettings = () => {
-        setIsChangingSettings(false)
-    }
-
-    const handleAddSeller = () => {
-        handleStopChangingSettings()
-
-        Api.post('/profile/settings', { seller_id: parseInt(sellerid), seller_key: sellerkey }).then(r => console.log(r.data))
-    }
 
     const confirm = (id) => {
         Api.delete(`/seller/category/${id}`).then(() => {
@@ -93,30 +78,17 @@ function Main() {
                                     <Button type="primary" danger onClick={handleStopAdding}>Отмена</Button></> : <Button type="primary" block onClick={handleStartAdding}>Добавить</Button> }
 
                                 
-                                { isChangingSettings ? 
-                                    <div>
-                                        <p style={{ marginTop: 10}}>SellerID</p>
-                                        <Input onChange={(e) => setSellerid(e.target.value)} value={sellerid} style={{ marginTop: 0, width: 200 }} />
-                                        <p style={{ marginTop: 10 }}>SellerKey</p>
-                                        <Input onChange={(e) => setSellerkey(e.target.value)} value={sellerkey} style={{ marginTop: 0, width: 200 }} />
-                                    </div> 
+
                                     
                                     : <></> }
                         </Col>
                         <Col span={4}>
                             <Button style={{ marginRight: 10 }}><Link to="/profile"><UserOutlined /></Link></Button>
-                            { isChangingSettings ? 
-                            
-                                <>
-                                    <Button onClick={handleStopChangingSettings} style={{ marginRight: 10 }} type="primary"><CloseOutlined /></Button>
-                                    <Button onClick={handleAddSeller} type="primary"><PlusOutlined /></Button>
-                                </>
-
-                            : <></> }
                             <Button style={{ marginLeft: 10 }}><Link to="/history">История</Link></Button>
 
-                            
-                        </Col> 
+                        </Col>
+
+
                     </Row>
                 { products ? products.map(i => {
                     return (
