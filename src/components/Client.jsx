@@ -51,14 +51,14 @@ function Client() {
                                     <Row>
                                         { product.keys ? product.keys.map(i => <>
                                             <Col span={12} >
-                                                <p style={{fontSize:20}}>Уникальный код: {i.unique_code}</p>
-                                                <p style={{fontSize:16}}>Продукт: {i.category_name}  </p>
-                                                <p style={{fontSize:16}}>Подтип: {i.subcategory_name}</p>
-                                                <p style={{ fontSize: 16 }}>{`Дата: ${i.date_check}`} </p>
+                                                <p style={{fontSize:20, color: "white"}}>Уникальный код: {i.unique_code}</p>
+                                                <p style={{fontSize:16, color: "white"}}>Продукт: {i.category_name}  </p>
+                                                <p style={{fontSize:16, color: "white"}}>Подтип: {i.subcategory_name}</p>
+                                                <p style={{ fontSize: 16, color: "white" }}>{`Дата: ${i.date_check}`} </p>
                                             </Col>
 
                                             <Col span={12} style={{marginTop:10, border: "2px dashed", display:"block", borderRadius: "12px", padding: 10}}>
-                                                <p style={{fontSize: 16, margin: "auto"}} >Ключи: {setLinks()} </p>
+                                                <p style={{fontSize: 16, margin: "auto", color: "white"}} >Ключи: {setLinks()} </p>
                                             </Col>
 
                                         </>) : <></> }
