@@ -27,7 +27,7 @@ function Client() {
             console.log(item, index)
 
             if ("http" === item.slice(0, 4) || ("https" === item.slice(0, 5))) {
-                return <a target={"_blank"} style={{marginLeft: 5, fontSize: 16, color: "white", textDecoration: 'none'}} key={index} href={item}>{item}</a>
+                return <a target={"_blank"} style={{marginLeft: 5, fontSize: 16, textDecoration: 'none'}} key={index} href={item}>{item}</a>
             }
 
             else if (item === "/"){
@@ -45,7 +45,7 @@ function Client() {
 
                 extra={ <Button><a href='https://oplata.info/info/'>Оставить отзыв</a></Button> }>
 
-                        <Card style={{ width: '100%', backgroundColor: 'darkcyan', color: 'white', boxSizing: "content-box", height: "100%" }}>
+                        <Card style={{ width: '100%', backgroundColor: '#8facb9', boxSizing: "content-box", height: "100%" }}>
 
 
                                     <Row>
