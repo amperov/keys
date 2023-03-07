@@ -27,7 +27,7 @@ function Client() {
             console.log(item, index)
 
             if ("http" === item.slice(0, 4) || ("https" === item.slice(0, 5))) {
-                return <a target={"_blank"} style={{marginLeft: 5, fontSize: 16, textDecoration: 'none'}} key={index} href={item}>{<b>item</b>}</a>
+                return <a target={"_blank"} style={{marginLeft: 5, fontSize: 16, textDecoration: 'none', color: "white"}} key={index} href={item}><b>{item}</b></a>
             }
 
             else if (item === "/"){
