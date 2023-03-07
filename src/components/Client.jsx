@@ -33,7 +33,7 @@ function Client() {
             else if (item === "/"){
                 return <p></p>
             }
-            return <div style={{display: "block", marginLeft: 5, fontSize: 16}} key={index}>{item}</div>
+            return <div style={{display: "inline-block", marginLeft: 5, fontSize: 16}} key={index}>{item}</div>
         })}
 
     return (
