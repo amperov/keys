@@ -15,7 +15,8 @@ function Client() {
         document.body.style.backgroundColor = '#679ED2'
         Api.get(`/client/${username}?uniquecode=${searchParams.get('uniquecode')}`).then((r) => setProduct({ keys: r.data }))
     }, [])
-    console.log(product)
+
+    setTimeout(console.log(product), 1000)
 
 
     const setLinks = () => {
@@ -58,7 +59,7 @@ function Client() {
                                             </Col>
 
                                             <Col span={12} style={{marginTop:10, border: "2px dashed", display:"block", borderRadius: "12px", padding: 10}}>
-                                                <p style={{fontSize: 16, margin: "auto", color: "white"}} >Ключи: {setLinks()} </p>
+                                                <p style={{fontSize: 16, margin: "auto", color: "white"}} > Ключи: {setLinks()} </p>
                                             </Col>
 
                                         </>) : <></> }

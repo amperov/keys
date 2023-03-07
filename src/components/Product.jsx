@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Card, Col, Row, Button, Input, Popconfirm } from 'antd'
+import {Card, Col, Row, Button, Input, Popconfirm, Radio, Checkbox} from 'antd'
 import { Api } from '../api/api'
 import { CheckOutlined } from '@ant-design/icons'
 
@@ -9,11 +9,17 @@ import { CheckOutlined } from '@ant-design/icons'
 function Product() {
     const [ subtypes, setSubtypes ] = useState([])
     const [ isAdding, setIsAdding ] = useState(false)
+    function SetDefaultNameRU(d){
+        return setNameRu(d)
+
+    }
     const [ nameRu, setNameRu ] = useState('')
     const [ nameEng, setNameEng ] = useState('')
     const [ title, setTitle ] = useState('')
     const [ digiid, setDigiid ] = useState('')
-
+    const [ isComposite, setIsComposite ] = useState(false)
+    const [ partialValues, setPartialValues ] = useState('')
+    const [ subtypeValue, setSubtypeValue ] = useState('')
     const [ isChangingName, setIsChangingName ] = useState([0, false])
 
     const [ newNameRU, setNewNameRU ] = useState('')
@@ -31,9 +37,19 @@ function Product() {
     }, [])
 
     const handleAddSubtype = () => {
-        Api.post('/seller/category/' + id, {title_eng: nameEng, title_ru: nameRu, subitem_id: parseInt(digiid)}).then(r => console.log(r.data))
+        Api.post('/seller/category/' + id, {
+            title_eng: nameEng,
+            title_ru: nameRu,
+            subitem_id: parseInt(digiid),
+            partial_values: partialValues,
+            subtype_value: parseInt(subtypeValue),
+            is_composite: isComposite}).then(r => console.log(r.data))
         setNameRu('')
         setNameEng('')
+        setDigiid('')
+        setPartialValues('')
+        setSubtypeValue('')
+        setIsComposite(false)
         setTimeout(n => window.location.reload(), 1000)
         // window.location.reload()
     }
@@ -80,7 +96,18 @@ function Product() {
                             <Col span={8}>
                                 <Input style={{ marginBottom: 10 }} value={nameRu} onChange={e => setNameRu(e.target.value)}  placeholder="Введите наименование на русском" />
                                 <Input style={{ marginBottom: 10 }} value={nameEng} onChange={e => setNameEng(e.target.value)}  placeholder="Введите наименование на английском" />
-                                <Input value={digiid} onChange={e => setDigiid(e.target.value)}  placeholder="Введите айди для предпроверки" />
+                                <Input style={{marginBottom: 10}} value={digiid} onChange={e => setDigiid(e.target.value)}  placeholder="Введите айди для предпроверки" />
+                                <Input style={{ marginBottom: 10 }} value={subtypeValue} onChange={e => setSubtypeValue(e.target.value)}  placeholder="Введите значение номинала" />
+                                {
+                                    isComposite ?
+                                        <div>
+                                            <Input style={{ marginBottom: 10 }} value={partialValues} onChange={e => setPartialValues(e.target.value)}  placeholder={"Введите частичные значение"} />
+
+                                            <Radio checked={true} value={isComposite} onClick={() => setIsComposite(false)}>Составной товар</Radio>
+                                        </div>
+                                            : <Checkbox  value={isComposite} onClick={() => setIsComposite(!isComposite)}>Составной товар</Checkbox>
+                                }
+
                                 <Button style={{ marginTop: 10, marginRight: 10 }} onClick={handleAddSubtype} type="primary">Добавить</Button>
                                 <Button type="primary" danger onClick={handleStopAdding}>Отмена</Button>
                                 
@@ -141,26 +168,49 @@ function Product() {
                                     <Row>
                                         <Col span={12}>
                                             <p style={{marginTop:0}}>Название (RU): {isChangingName[1] & isChangingName[0] === i.id ?
-                                                <Input placeholder={i.title_ru} onChange={(e) => setNewNameRU(e.target.value)} value={newNameRU} style={{ width: 150, margin:0 }} /> : i.title_ru}
+                                                <Input  placeholder={i.title_ru} onClick={(e) => setNewNameRU(i.title_ru)} onChange={(e) => setNewNameRU(e.target.value)} value={newNameRU}
+                                                       style={{ width: 150, margin:0, marginLeft: 60  }} /> : i.title_ru}
                                             </p>
                                             <p style={{marginTop:0}}>Название (EN): {isChangingName[1] & isChangingName[0] === i.id ?
-                                                <Input placeholder={i.title_eng} onChange={(e) => setNewNameEn(e.target.value)} value={newNameEn} style={{ width: 150, margin: 0 }} /> : i.title_eng}
+                                                <Input onClick={(e) => setNewNameEn(i.title_eng)} placeholder={i.title_eng} onChange={(e) => setNewNameEn(e.target.value)} value={newNameEn} style={{ width: 150, margin: 0, marginLeft: 60 }} /> : i.title_eng}
                                             </p>
-                                            <p style={{marginTop:0}}>SubItemID: {isChangingName[1] & isChangingName[0] === i.id ?
-                                                <Input placeholder={i.subitem_id} onChange={(e) => setNewSubitemId(e.target.value)} value={newSubitemId} style={{ width: 150, marginLeft: 30 }} /> : i.subitem_id}
+                                            <p style={{marginTop:0}}>Айди для предпроверки: {isChangingName[1] & isChangingName[0] === i.id ?
+                                                <Input  onClick={(e) => setNewSubitemId(i.subitem_id)} placeholder={i.subitem_id} onChange={(e) => setNewSubitemId(e.target.value)} value={newSubitemId} style={{ width: 150 }} /> : i.subitem_id}
                                             </p>
+                                            <div id={"1"}>
+                                                <p style={{marginTop:0}}>Составные номиналы: {isChangingName[1] & isChangingName[0] === i.id ?
+                                                    <Input onClick={(e) => setPartialValues(i.partial_values)} placeholder={i.subitem_id} onChange={(e) => setPartialValues(e.target.value)} value={partialValues} style={{ width: 150, marginLeft: 15 }} /> :
+                                                    `${i.partial_values === "" ? "Отсутствуют" : i.partial_values}`}
+                                                </p>
+                                                <p style={{marginTop:0}}>Ценность номинала: {isChangingName[1] & isChangingName[0] === i.id ?
+                                                    <Input onClick={(e) => setSubtypeValue(i.subtype_value)} onChange={(e) => setSubtypeValue(e.target.value)} value={subtypeValue} style={{ width: 150, marginLeft: 25 }} /> : i.subtype_value}
+                                                </p>
+                                            </div>
+                                            <p style={{marginTop:0}}>Составной товар: {isChangingName[1] & isChangingName[0] === i.id ?
+                                                <Checkbox onClick={() => {setIsComposite(!isComposite);}} value={isComposite} checked={isComposite} style={{ width: 150, marginLeft: 30 }} /> : `${i.is_composite ? "Да" : "Нет"}`}
+                                            </p>
+
+
+
+
                                         </Col>
                                         <Col span={6}>
                                             {(isChangingName[1] & (isChangingName[0] === i.id)) ?
                                                 <Button type={"primary"} onClick={() => {
-                                                    Api.patch(`seller/category/${id}/subcategory/${i.id}`, { title_ru: newNameRU, subitem_id: parseInt(newSubitemId) }).then(r => console.log(r.data))
+                                                    Api.patch(`seller/category/${id}/subcategory/${i.id}`, { title_ru: newNameRU,title_eng: newNameEn,
+                                                        subitem_id: parseInt(newSubitemId),
+                                                        partial_values: partialValues,
+                                                        subtype_value: parseInt(subtypeValue),
+                                                        is_composite: isComposite}).then(r => console.log(r.data))
                                                     setIsChangingName([0, false])
-                                                    setTimeout(n => window.location.reload(), 500)
+                                                        //setTimeout(n => window.location.reload(), 5000)
                                                 }} >Обновить </Button> : ``}
                                         </Col>
                                         <Col span={4}>
-
-                                            <b>Ключи: {i.count_products}</b>
+                                            {!i.is_composite ?
+                                                <b>Ключи: {i.count_products}</b>
+                                                : <></>
+                                            }
                                             <p>{`Дата: ${i.created_at.split('.')[0]}`}</p>
                                         </Col>
                                     </Row>
@@ -174,8 +224,7 @@ function Product() {
 
 
                 }) : <></> }
-        </>
-    )
+        </>)
 }
 
 export default Product
