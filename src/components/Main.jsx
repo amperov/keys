@@ -60,7 +60,6 @@ function Main() {
     return (
         <>
             <div>
-                
                     <Row style={{marginBottom: 20}} gutter={16}>
                         <Col span={4}>
                         </Col>
@@ -80,7 +79,7 @@ function Main() {
                                 
 
                                     
-                                    : <></> }
+                                     <></>
                         </Col>
                         <Col span={4}>
                             <Button style={{ marginRight: 10 }}><Link to="/profile"><UserOutlined /></Link></Button>
