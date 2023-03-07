@@ -39,7 +39,7 @@ function Main() {
         setNameENG('')
         setItemId('')
         setDescription('')
-        setTimeout(n => window.location.reload(), 1000)
+        setTimeout(n => window.location.reload(), 500)
 
     }
 

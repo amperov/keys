@@ -55,7 +55,7 @@ function Keys() {
                                         console.log(content)
                                         Api.post(`/seller/category/${id}/subcategory/${sid}/${howManyKeys}`, { content: content } ).then(r => console.log(r.data))
                                         setContent('')
-                                        setTimeout(n => window.location.reload(), 3000)
+                                        setTimeout(n => window.location.reload(), 500)
 
                                     }}>Добавить</Button>
                                 </>
@@ -103,7 +103,7 @@ function Keys() {
                                             setIsChangingKey([0, false])
                                             Api.patch(`/seller/category/${id}/subcategory/${sid}/products/${i.id}`, { content: newTitle }).then(r => console.log(r.data))
                                             setNewTitle('')
-                                            setTimeout(n => window.location.reload(), 2000)
+                                            setTimeout(n => window.location.reload(), 500)
 
                                         }}>+</Button>
                                     </> : i.content_key.split('\n').map(k => <p>{k}</p>)}

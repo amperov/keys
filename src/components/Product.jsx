@@ -153,9 +153,9 @@ function Product() {
                                         <Col span={6}>
                                             {(isChangingName[1] & (isChangingName[0] === i.id)) ?
                                                 <Button type={"primary"} onClick={() => {
-                                                    setTimeout(Api.patch(`seller/category/${id}/subcategory/${i.id}`, { title_ru: newNameRU, subitem_id: parseInt(newSubitemId) }).then(r => console.log(r.data)), 3000)
+                                                    Api.patch(`seller/category/${id}/subcategory/${i.id}`, { title_ru: newNameRU, subitem_id: parseInt(newSubitemId) }).then(r => console.log(r.data))
                                                     setIsChangingName([0, false])
-                                                    window.location.reload()
+                                                    setTimeout(n => window.location.reload(), 500)
                                                 }} >Обновить </Button> : ``}
                                         </Col>
                                         <Col span={4}>
