@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {Link, useParams, useSearchParams} from 'react-router-dom'
-import { Button, Card, } from 'antd'
+import {Button, Card, Col, Row,} from 'antd'
 import { Api } from '../api/api';
 
 
@@ -27,43 +27,43 @@ function Client() {
             console.log(item, index)
 
             if ("http" === item.slice(0, 4) || ("https" === item.slice(0, 5))) {
-                return <a target={"_blank"} style={{marginLeft: 5, fontSize: 20}} key={index} href={item}>{item}</a>
+                return <a target={"_blank"} style={{marginLeft: 5, fontSize: 16}} key={index} href={item}>{item}</a>
             }
 
             else if (item === "/"){
                 return <p></p>
             }
-
-
-
-            return <div style={{display: "inline-block", marginLeft: 5, fontSize: 20}} key={index}>{item}</div>
+            return <div style={{display: "block", marginLeft: 5, fontSize: 16}} key={index}>{item}</div>
         })}
 
     return (
-        <div style={{ backgroundColor: '#679ED2', color: 'white' }}>
+        <div style={{  color: 'darkkhaki' }}>
 
             <Card
-                style={{ width: '100%', backgroundColor: '#408AD2', color: 'white' }}
+                style={{ width: '100%', backgroundColor: '#1a88ca', color: 'red' }}
                 title={<p style={{ color: 'white' }}>Номер заказа: {product.keys ? product.keys[0].unique_inv: 0}</p>}
 
-                extra={ <Button><a href='https://oplata.info/info/'>Оставить отзыв</a></Button> }
-                                    
-            >
-                <Card style={{ width: '100%', backgroundColor: '#04396C', color: 'white' }}>
+                extra={ <Button><a href='https://oplata.info/info/'>Оставить отзыв</a></Button> }>
 
-                    { product.keys ? product.keys.map(i => <>
-                        <div >
-                            <h2>Уникальный код: {i.unique_code}</h2>
+                        <Card style={{ width: '100%', backgroundColor: 'darkcyan', color: 'white', boxSizing: "content-box", height: "100%" }}>
 
-                            <h3>Продукт: {i.category_name}  </h3>
-                            <h3>Подтип: {i.subcategory_name}</h3>
-                            <p >Ключи: {setLinks()} </p>
-                            <h3 style={{ fontSize: 20 }}>{`Дата: ${i.date_check}`} </h3>
-                        </div>
 
-                    </>) : <></> }
-                
-                </Card>
+                                    <Row>
+                                        { product.keys ? product.keys.map(i => <>
+                                            <Col span={12} >
+                                                <p style={{fontSize:20}}>Уникальный код: {i.unique_code}</p>
+                                                <p style={{fontSize:16}}>Продукт: {i.category_name}  </p>
+                                                <p style={{fontSize:16}}>Подтип: {i.subcategory_name}</p>
+                                                <p style={{ fontSize: 16 }}>{`Дата: ${i.date_check}`} </p>
+                                            </Col>
+
+                                            <Col span={12} style={{marginTop:10, border: "2px dashed", display:"block", borderRadius: "12px", padding: 10}}>
+                                                <p style={{fontSize: 16, margin: "auto"}} >Ключи: {setLinks()} </p>
+                                            </Col>
+
+                                        </>) : <></> }
+                                    </Row>
+                    </Card>
             </Card>
         </div>)
                     }
