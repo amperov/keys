@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Col, Row, Button, Input } from 'antd'
+import { Card, Col,  Button } from 'antd'
 import { Api } from '../api/api'
 import { useParams } from 'react-router-dom'
 import TextArea from "antd/es/input/TextArea";
@@ -38,12 +38,11 @@ function Transaction() {
                                     </Col>
                                     <Button danger onClick={() => setIsChangingKey(false)} style={{ marginLeft: 50 }} type="primary">
                                         Отмена
-                                    </Button></>  : <> {transaction.content_key}</>}
+                                    </Button></>  : <> { transaction.content_key}</>}
 
                             <Button onClick={() => isChangingKey ? handleChangeKey() : setIsChangingKey(true)} style={{ marginLeft: 110, marginRight: 10 }} type="primary">
                                 Изменить ключ
                             </Button>
-                        <p>Уникальный код: {transaction.unique_code}</p>
                         <p>Тип: {transaction.category_name}</p>
                         <p>Подтип: {transaction.subcategory_name}</p>
                         <p>Email: {transaction.client_email}</p>
