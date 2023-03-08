@@ -26,15 +26,23 @@ function Client() {
         var a = m.split(" ")
 
         return a.map((item, index) => {
-            console.log(item, index)
+            console.log(`Item for button ${item}`)
+            if (item === "/"){
+                return <p></p>
+            }
+            else if (index % 3 === 1){
+                console.log(`Item ${item}`)
+                return <p style={{display: "inline"}}> {item} <Button style={{marginLeft: 4}} onClick={() => {
+                    navigator.clipboard.writeText(item)
+                    alert(`${item} Скопирован!`)
+                }}>Скопировать код  </Button></p>
+            }
 
-            if ("http" === item.slice(0, 4) || ("https" === item.slice(0, 5))) {
+            else if ("http" === item.slice(0, 4) || ("https" === item.slice(0, 5))) {
                 return <a target={"_blank"} style={{marginLeft: 5, fontSize: 16, textDecoration: 'none'}} key={index} href={item}><b>{item}</b></a>
             }
 
-            else if (item === "/"){
-                return <p></p>
-            }
+
             return <div style={{display: "inline-block", marginLeft: 5, fontSize: 16, color: "white"}} key={index}>{item}</div>
         })}
 
