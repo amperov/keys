@@ -21,30 +21,31 @@ function Client() {
 
 
     const setLinks = () => {
-        var m = product.keys[0].content_key.split("\n").join(" / ")
+        var m = product.keys[0].content_key.split("\n")
 
-        var a = m.split(" ")
+        return m.map((item, index) => {
+            return item.split(' ').map(function (item1, index1) {
+                if (index1 === 1) {
+                    console.log(`Item ${item1}`)
+                    return <div style={{display: "block"}}>
 
-        return a.map((item, index) => {
-            console.log(`Item for button ${item}`)
-            if (item === "/"){
-                return <p></p>
-            }
-            else if (index % 3 === 1){
-                console.log(`Item ${item}`)
-                return <p style={{display: "inline"}}> {item} <Button style={{marginLeft: 4}} onClick={() => {
-                    navigator.clipboard.writeText(item)
-                    alert(`${item} Скопирован!`)
-                }}>Скопировать код  </Button></p>
-            }
-
-            else if ("http" === item.slice(0, 4) || ("https" === item.slice(0, 5))) {
-                return <a target={"_blank"} style={{marginLeft: 5, fontSize: 16, textDecoration: 'none'}} key={index} href={item}><b>{item}</b></a>
-            }
+                            {item1}
+                            <Button style={{marginLeft: 4}} onClick={() => {
+                                navigator.clipboard.writeText(item1)
+                                alert(`Код ${item1} скопирован`)
+                            }}>Копировать</Button>
 
 
-            return <div style={{display: "inline-block", marginLeft: 5, fontSize: 16, color: "white"}} key={index}>{item}</div>
-        })}
+                         <br/></div>
+                } else {
+                    return <p style={{display: "inline"}}> {item1} </p>
+                }
+            })
+
+
+        })
+    }
+
 
     return (
         <div style={{  color: 'darkkhaki' }}>
