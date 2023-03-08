@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Link, useParams, useSearchParams} from 'react-router-dom'
+import { useParams, useSearchParams} from 'react-router-dom'
 import {Button, Card, Col, Row,} from 'antd'
 import { Api } from '../api/api';
 
@@ -16,13 +16,14 @@ function Client() {
         Api.get(`/client/${username}?uniquecode=${searchParams.get('uniquecode')}`).then((r) => setProduct({ keys: r.data }))
     }, [])
 
-    setTimeout(console.log(product), 1000)
+    setTimeout(console.log(product), 5000)
+
 
 
     const setLinks = () => {
-        var m = product.keys[0].content_key.split("\n").join("||")
+        var m = product.keys[0].content_key.split("\n").join(" / ")
 
-        var a = m.split("||")
+        var a = m.split(" ")
 
         return a.map((item, index) => {
             console.log(item, index)

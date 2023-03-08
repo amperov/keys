@@ -71,14 +71,14 @@ function Keys() {
                     </Col> 
                 </Row>
 
-                { keys ? keys.map(i => {
+                { keys ? keys.map((i, index) => {
                     return (
                         <Row style={{marginBottom: 20}} gutter={16}>
                             <Col span={8}>
                             </Col>
                             <Col span={10}>
                                 <Card
-                                    title={"Ключ"}
+                                    title={`Ключ ${index + 1}`}
                                     style={{ width: '100%' }}
                                     extra={<>
                                             <Button onClick={() => setIsChangingKey([ i.id, true ])} style={{ margin: 10 }}>Обновить</Button>
