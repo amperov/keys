@@ -72,7 +72,7 @@ function Main() {
                                     Название (EN)<Input value={nameENG} onChange={e => setNameENG(e.target.value)}  style={{ marginBottom: 10 }} placeholder="Введите наименование на английском" />
                                     Описание <Input value={description} onChange={e => setDescription(e.target.value)}  style={{ marginBottom: 10 }} placeholder="Введите описание товара" />
                                     Сообщение: <TextArea value={message} onChange={e => setMessage(e.target.value)}  onPressEnter={ message + "\n"} style={{ marginBottom: 10, height: 100 }} placeholder="Введите сообщение" />
-                                    <Input value={itemId} onChange={e => setItemId(e.target.value)}  style={{ marginBottom: 10 }} placeholder="Введите id товара" />
+                                    {/*<Input value={itemId} onChange={e => setItemId(e.target.value)}  style={{ marginBottom: 10 }} placeholder="Введите id товара" />*/}
                                     <Button style={{ marginTop: 10, marginRight: 10 }} onClick={handleAddProduct} type="primary">Добавить</Button>
                                     <Button type="primary" danger onClick={handleStopAdding}>Отмена</Button></> : <Button type="primary" block onClick={handleStartAdding}>Добавить</Button> }
 

@@ -96,7 +96,7 @@ function Product() {
                             <Col span={8}>
                                 <Input style={{ marginBottom: 10 }} value={nameRu} onChange={e => setNameRu(e.target.value)}  placeholder="Введите наименование на русском" />
                                 <Input style={{ marginBottom: 10 }} value={nameEng} onChange={e => setNameEng(e.target.value)}  placeholder="Введите наименование на английском" />
-                                <Input style={{marginBottom: 10}} value={digiid} onChange={e => setDigiid(e.target.value)}  placeholder="Введите айди для предпроверки" />
+                                {/*<Input style={{marginBottom: 10}} value={digiid} onChange={e => setDigiid(e.target.value)}  placeholder="Введите айди для предпроверки" />*/}
                                 <Input style={{ marginBottom: 10 }} value={subtypeValue} onChange={e => setSubtypeValue(e.target.value)}  placeholder="Введите значение номинала" />
                                 {
                                     isComposite ?
@@ -136,7 +136,7 @@ function Product() {
                         <Row style={{marginBottom: 20}} gutter={16}>
                             <Col span={4}>
                             </Col>
-                            <Col span={18}>
+                            <Col span={16}>
                                 <Card
                                     style={{ width: '100%' }}
                                     title={`Подкатегория: ${i.title_ru}`}
@@ -163,7 +163,8 @@ function Product() {
                                                         Удалить
                                                     </Button>
                                                 </Popconfirm>
-                                            <Link to={`/${id}/keys/${i.id}`}>Перейти</Link>
+                                                {!i.is_composite ?<Link to={`/${id}/keys/${i.id}`}>Перейти</Link>:<></>}
+
                                         </>}>
                                     <Row>
                                         <Col span={12}>
@@ -174,9 +175,9 @@ function Product() {
                                             <p style={{marginTop:0}}>Название (EN): {isChangingName[1] & isChangingName[0] === i.id ?
                                                 <Input onClick={(e) => setNewNameEn(i.title_eng)} placeholder={i.title_eng} onChange={(e) => setNewNameEn(e.target.value)} value={newNameEn} style={{ width: 150, margin: 0, marginLeft: 60 }} /> : i.title_eng}
                                             </p>
-                                            <p style={{marginTop:0}}>Айди для предпроверки: {isChangingName[1] & isChangingName[0] === i.id ?
+                                            {/*<p style={{marginTop:0}}>Айди для предпроверки: {isChangingName[1] & isChangingName[0] === i.id ?
                                                 <Input  onClick={(e) => setNewSubitemId(i.subitem_id)} placeholder={i.subitem_id} onChange={(e) => setNewSubitemId(e.target.value)} value={newSubitemId} style={{ width: 150 }} /> : i.subitem_id}
-                                            </p>
+                                            </p>*/}
                                             <div id={"1"}>
                                                 <p style={{marginTop:0}}>Составные номиналы: {isChangingName[1] & isChangingName[0] === i.id ?
                                                     <Input onClick={(e) => setPartialValues(i.partial_values)} placeholder={i.subitem_id} onChange={(e) => setPartialValues(e.target.value)} value={partialValues} style={{ width: 150, marginLeft: 15 }} /> :
@@ -194,7 +195,7 @@ function Product() {
 
 
                                         </Col>
-                                        <Col span={6}>
+                                        <Col span={4}>
                                             {(isChangingName[1] & (isChangingName[0] === i.id)) ?
                                                 <Button type={"primary"} onClick={() => {
                                                     Api.patch(`seller/category/${id}/subcategory/${i.id}`, { title_ru: newNameRU,title_eng: newNameEn,
