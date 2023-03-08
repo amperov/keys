@@ -31,13 +31,16 @@ function Transaction() {
                                           style={{ marginBottom: 20 }}
                                           title={`${transaction.category_name} - ${transaction.subcategory_name}`}>
 
-                       <h4 style={{marginBottom: 0}}> Ключ:</h4> { isChangingKey ? <>
-                            <TextArea onClick={(e) => setNewKey(transaction.content_key)} value={newKey} onChange={e => setNewKey(e.target.value)} style={{ marginBottom: 10, marginLeft:100, width: 400 }} placeholder={transaction.content_key} />
-                            <Col>
+                               <h4 style={{marginBottom: 0}}> Ключ:</h4> { isChangingKey ? <>
+                                    <TextArea onClick={(e) => setNewKey(transaction.content_key)} value={newKey} onChange={e => setNewKey(e.target.value)} style={{ marginBottom: 10, marginLeft:50, width: 400 }} placeholder={transaction.content_key} />
+                                    <Col>
 
-                            </Col>
-                            <Button danger onClick={() => setIsChangingKey(false)} style={{ marginLeft: 10 }} type="primary">Отмена</Button></>  : <> <br/>{transaction.content_key}</>}
-                            <Button onClick={() => isChangingKey ? handleChangeKey() : setIsChangingKey(true)} style={{ marginLeft: 10, marginRight: 10 }} type="primary">
+                                    </Col>
+                                    <Button danger onClick={() => setIsChangingKey(false)} style={{ marginLeft: 50 }} type="primary">
+                                        Отмена
+                                    </Button></>  : <> {transaction.content_key}</>}
+
+                            <Button onClick={() => isChangingKey ? handleChangeKey() : setIsChangingKey(true)} style={{ marginLeft: 110, marginRight: 10 }} type="primary">
                                 Изменить ключ
                             </Button>
                         <p>Уникальный код: {transaction.unique_code}</p>
@@ -46,6 +49,7 @@ function Transaction() {
                         <p>Email: {transaction.client_email}</p>
                         <p>Сумма: {transaction.amount} рублей </p>
                     </Card> : <></> }
+
                 </Card>
             </Card>
         </>

@@ -20,9 +20,9 @@ function Client() {
 
 
     const setLinks = () => {
-        var m = product.keys[0].content_key.split("\n").join(" / ")
+        var m = product.keys[0].content_key.split("\n").join("||")
 
-        var a = m.split(" ")
+        var a = m.split("||")
 
         return a.map((item, index) => {
             console.log(item, index)

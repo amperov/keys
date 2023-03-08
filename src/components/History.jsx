@@ -9,7 +9,9 @@ function History() {
 
     useEffect(() => {
         Api.get('/seller/history').then(r => setHistory(r.data))
+        console.log(history)
     }, [])
+
 
     return (
         <>
