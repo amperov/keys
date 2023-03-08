@@ -29,19 +29,19 @@ function History() {
 
                             <Col style={{fontSize: 16}}> Категория: {i.category_name}</Col>
                             <Row gutter={13}>
-                                <Col span={5}>
+                                <Col span={8}>
                                     <p style={{fontSize: 16}}> Подкатегория: {i.subcategory_name}</p>
                                     <p style={{fontSize: 16}}> Уникальный код: {i.unique_code}</p>
                                     <p style={{fontSize: 16}}> Цена: {i.amount}₽ </p>
                                     <p style={{fontSize: 16}}> Ключ был добавлен: {i.created_at.split('.')[0]}</p>
                                 </Col>
-                                <Col span={5}>
+                                <Col span={8}>
                                     <p style={{fontSize: 16,
                                         display: "inline-block",boxSizing: "content-box",
                                         border: "2px solid",borderColor: "lightgreen",
                                         borderRadius: "15px", padding: "20px 30px", marginLeft: 50}}> Ключ: {i.content_key.split('\n').map(k => <div >{k}</div>)}</p>
                                 </Col>
-                                <Col span={3} >
+                                <Col span={8} >
                                     <Button type={"dashed"} style={{ marginLeft: 50}}>
                                         <Link to={`/history/transaction/${i.id}`}>
                                             Перейти

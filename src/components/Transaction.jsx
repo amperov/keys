@@ -26,18 +26,24 @@ function Transaction() {
                 title={<b>Транзакция</b>}
                 extra={<Button onClick={() => window.history.back()}>Назад</Button>}>
                 <Card
-                    title="Продукты">
+                    title={`Номер заказа: ${transaction.unique_inv} || Уникальный код: ${transaction.unique_code}`}>
                     { transaction ? <Card extra={`Дата: ${transaction.date_check}`}
                                           style={{ marginBottom: 20 }}
                                           title={`${transaction.category_name} - ${transaction.subcategory_name}`}>
 
-                        Ключ: { isChangingKey ? <> Ключ:
-                            <TextArea onClick={(e) => setNewKey(transaction.content_key)} value={newKey} onChange={e => setNewKey(e.target.value)} style={{ marginBottom: 10, width: 500 }} placeholder={transaction.content_key} />
-                            <Button danger onClick={() => setIsChangingKey(false)} style={{ marginLeft: 10 }} type="primary">Отмена</Button></>  : transaction.content_key}
+                       <h4 style={{marginBottom: 0}}> Ключ:</h4> { isChangingKey ? <>
+                            <TextArea onClick={(e) => setNewKey(transaction.content_key)} value={newKey} onChange={e => setNewKey(e.target.value)} style={{ marginBottom: 10, marginLeft:100, width: 400 }} placeholder={transaction.content_key} />
+                            <Col>
 
+                            </Col>
+                            <Button danger onClick={() => setIsChangingKey(false)} style={{ marginLeft: 10 }} type="primary">Отмена</Button></>  : <> <br/>{transaction.content_key}</>}
                             <Button onClick={() => isChangingKey ? handleChangeKey() : setIsChangingKey(true)} style={{ marginLeft: 10, marginRight: 10 }} type="primary">
                                 Изменить ключ
                             </Button>
+                        <p>Уникальный код: {transaction.unique_code}</p>
+                        <p>Тип: {transaction.category_name}</p>
+                        <p>Подтип: {transaction.subcategory_name}</p>
+                        <p>Email: {transaction.client_email}</p>
                         <p>Сумма: {transaction.amount} рублей </p>
                     </Card> : <></> }
                 </Card>
