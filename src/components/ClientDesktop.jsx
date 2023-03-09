@@ -5,7 +5,7 @@ import { Api } from '../api/api';
 
 
 
-function Client() {
+function ClientDesktop() {
     const [ searchParams ] = useSearchParams();
     const [ product, setProduct ] = useState({})
 
@@ -81,4 +81,4 @@ function Client() {
         </div>)
                     }
 
-export default Client
+export default ClientDesktop

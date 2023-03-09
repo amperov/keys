@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Authorization from './components/Authorization';
-import Client from './components/Client';
+import ClientDesktop from './components/ClientDesktop';
 import Main from './components/Main';
 import Product from './components/Product';
 import Signup from './components/Signup';
@@ -10,9 +10,14 @@ import Profile from './components/Profile';
 import Keys from './components/Keys';
 import Transaction from './components/Transaction';
 import { Api } from './api/api';
+import MediaQuery, {useMediaQuery} from "react-responsive";
+import ClientMobile from "./components/ClientMobile";
+
 
 function App() {
   const [ isAuthorized, setIsAuthorized ] = useState(false)
+
+
 
   useEffect(() => {
     document.title = 'plati.market';
@@ -43,7 +48,19 @@ function App() {
           <Route path='/history/' element={<History />} />
           <Route path='/history/transaction/:id' element={<Transaction />} />
           <Route path='/profile/' element={<Profile />} />
-          <Route path='/product/:username' element={<Client />} />
+          <Route path='/product/:username' element={
+            <>
+            <MediaQuery minWidth={1224}>
+              <ClientDesktop/>
+            </MediaQuery>
+              <MediaQuery minWidth={390}>
+                <ClientMobile/>
+              </MediaQuery>
+            </>
+            }
+
+
+          />
         
         </Routes>
         : 
@@ -52,7 +69,7 @@ function App() {
 
           <Route path='/signin' element={<Authorization />} />
           <Route path='/signup' element={<Signup />} />
-          <Route path='/product/:username' element={<Client />} />
+          <Route path='/product/:username' element={<ClientDesktop />} />
         
         </Routes>
       }
@@ -62,7 +79,7 @@ function App() {
       <Route path='/seller/products/' element={<Main />} />
       <Route path='/seller/products/:id' element={<Product />} />
       <Route path='/profile/' element={<Profile />} />
-      <Route path='/product' element={<Client />} />
+      <Route path='/product' element={<ClientDesktop />} />
       <Route path='/seller/history/' element={<History />} />
 
 
