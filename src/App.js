@@ -53,7 +53,8 @@ function App() {
             <MediaQuery minWidth={1224}>
               <ClientDesktop/>
             </MediaQuery>
-              <MediaQuery minWidth={390}>
+
+              <MediaQuery maxWidth={1224}>
                 <ClientMobile/>
               </MediaQuery>
             </>
