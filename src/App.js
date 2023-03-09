@@ -20,7 +20,7 @@ function App() {
 
 
   useEffect(() => {
-    document.title = 'plati.market';
+    document.title = 'TurKEY Cards';
     const token = localStorage.getItem('jwt')
     
     if (token) {
