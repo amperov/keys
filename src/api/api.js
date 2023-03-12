@@ -1,7 +1,7 @@
 import axios from "axios"
 // const https = require('https')
 
-const baseURL = 'https://popolni.site/api'
+const baseURL = 'https://195.140.146.153/api'
 
 
 const token = localStorage.getItem('jwt')
