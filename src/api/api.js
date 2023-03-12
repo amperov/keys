@@ -1,7 +1,7 @@
 import axios from "axios"
 // const https = require('https')
 
-const baseURL = 'https://212.57.126.34:8080/api'
+const baseURL = 'http://212.57.126.34:8080/api'
 
 
 const token = localStorage.getItem('jwt')
