@@ -34,10 +34,10 @@ function Profile() {
             <Card 
                 extra={<Button onClick={() => window.history.back()}>Назад</Button>}
                 title="Профиль">
-                <p>Имя пользователя: {profile.username}</p>
+                <p>Login of User: {profile.username}</p>
                 <p>Seller ID: {profile.seller_id}</p>
                 <p>Seller Key: {profile.seller_key}</p>
-                {isChangingSettings != true ?  <Button onClick={handleStartChangingSettings}>Обновить настройки</Button> : <> </>}
+                {isChangingSettings != true ?  <Button onClick={handleStartChangingSettings}>Update settings</Button> : <> </>}
             </Card>
             { isChangingSettings ?
                 <Card>
@@ -52,8 +52,8 @@ function Profile() {
 
                             <Col span={5} style={{marginTop: 5}}>
                                 <Row style={{display: "flex", justifyContent: "center"}}>
-                                    <Button onClick={handleStopChangingSettings} style={{ marginRight: 10}} type="primary">Отмена</Button>
-                                    <Button style={{marginRight: 10}} onClick={handleAddSeller} type="primary">Обновить</Button>
+                                    <Button onClick={handleStopChangingSettings} style={{ marginRight: 10}} type="primary">Cansel</Button>
+                                    <Button style={{marginRight: 10}} onClick={handleAddSeller} type="primary">Update</Button>
                                 </Row>
                             </Col> : <></> }
                     </Row>

@@ -32,8 +32,8 @@ function ClientDesktop() {
                             {item1}
                             <Button style={{marginLeft: 4}} onClick={() => {
                                 navigator.clipboard.writeText(item1)
-                                alert(`Код ${item1} скопирован`)
-                            }}>Копировать</Button>
+                                alert(`${item1} Copied`)
+                            }}>Copy</Button>
 
 
                          <br/></div>
@@ -52,9 +52,9 @@ function ClientDesktop() {
 
             <Card
                 style={{ width: '100%', backgroundColor: '#1a88ca', color: 'red' }}
-                title={<p style={{ color: 'white' }}>Номер заказа: {product.keys ? product.keys[0].unique_inv: 0}</p>}
+                title={<p style={{ color: 'white' }}>Purchase ID: {product.keys ? product.keys[0].unique_inv: 0}</p>}
 
-                extra={ <Button><a href='https://oplata.info/info/'>Оставить отзыв</a></Button> }>
+                extra={ <Button><a href='https://oplata.info/info/'>Leave a review</a></Button> }>
 
                         <Card style={{ width: '100%', backgroundColor: '#8facb9', boxSizing: "content-box", height: "100%" }}>
 
@@ -62,16 +62,16 @@ function ClientDesktop() {
                                     <Row>
                                         { product.keys ? product.keys.map(i => <>
                                             <Col span={12} >
-                                                <p style={{fontSize:20, color: "white"}}>Уникальный код: {i.unique_code}</p>
-                                                <p style={{fontSize:16, color: "white"}}>Продукт: {i.category_name}  </p>
-                                                <p style={{fontSize:16, color: "white"}}>Подтип: {i.subcategory_name}</p>
-                                                <p style={{fontSize:16, color: "white"}}>Количество: {i.count}</p>
+                                                <p style={{fontSize:20, color: "white"}}>Unique Code: {i.unique_code}</p>
+                                                <p style={{fontSize:16, color: "white"}}>Category: {i.category_name}  </p>
+                                                <p style={{fontSize:16, color: "white"}}>Subcategory: {i.subcategory_name}</p>
+                                                <p style={{fontSize:16, color: "white"}}>Count: {i.count}</p>
                                                 <p style={{fontSize:16, color: "white"}}>Email: {i.client_email}</p>
-                                                <p style={{ fontSize: 16, color: "white" }}>{`Дата: ${i.date_check}`} </p>
+                                                <p style={{ fontSize: 16, color: "white" }}>{`Date Check: ${i.date_check}`} </p>
                                             </Col>
 
                                             <Col span={12} style={{marginTop:10, border: "2px dashed", display:"block", borderRadius: "12px", padding: 10}}>
-                                                <p style={{fontSize: 16, margin: "auto", color: "white"}} > Ключи: <br/>{setLinks()} </p>
+                                                <p style={{fontSize: 16, margin: "auto", color: "white"}} > Keys: <br/>{setLinks()} </p>
                                             </Col>
 
                                         </>) : <></> }

@@ -42,14 +42,14 @@ function Keys() {
                     <Col span={8}></Col>
                     <Col span={8}>
                         <Card style={{ width: '100%' }}>
-                            <p>{`Количество ключей: ${keys ? keys.length : 0}`}</p>
+                            <p>{`Count of Keys: ${keys ? keys.length : 0}`}</p>
                             <Radio.Group options={options} value={howManyKeys} onChange={e => setHowManyKeys(e.target.value) } optionType="button" />
                         </Card>
 
                         {
                             isAddingKeys ? 
                                 <>
-                                    <TextArea value={content} onChange={e => setContent(e.target.value)} style={{ marginTop: 10, height:100 }} placeholder="Введите ключи" />
+                                    <TextArea value={content} onChange={e => setContent(e.target.value)} style={{ marginTop: 10, height:100 }} placeholder="Insert Keys" />
                                     <Button onClick={() => setIsAddingKeys(false)} style={{ marginRight: 10, marginTop: 10 }}>Отмена</Button>
                                     <Button  onClick={() => {
                                         console.log(content)
@@ -57,17 +57,17 @@ function Keys() {
                                         setContent('')
                                         setTimeout(n => window.location.reload(), 500)
 
-                                    }}>Добавить</Button>
+                                    }}>Add</Button>
                                 </>
                                 
                             :
 
-                            <Button type="primary" onClick={() => setIsAddingKeys(true)} style={{ width: '100%', marginTop: 10 }}>Добавить</Button>
+                            <Button type="primary" onClick={() => setIsAddingKeys(true)} style={{ width: '100%', marginTop: 10 }}>Add</Button>
 
                         }
                     </Col>
                     <Col span={8}>
-                        <Link to={`/${id}`}><Button>Назад</Button></Link>
+                        <Link to={`/${id}`}><Button>Cancel</Button></Link>
                     </Col> 
                 </Row>
 
@@ -78,25 +78,25 @@ function Keys() {
                             </Col>
                             <Col span={10}>
                                 <Card
-                                    title={`Ключ ${index + 1}`}
+                                    title={`Key ${index + 1}`}
                                     style={{ width: '100%' }}
                                     extra={<>
-                                            <Button onClick={() => setIsChangingKey([ i.id, true ])} style={{ margin: 10 }}>Обновить</Button>
+                                            <Button onClick={() => setIsChangingKey([ i.id, true ])} style={{ margin: 10 }}>Update</Button>
 
                                         <Popconfirm
-                                            title="Удалить"
+                                            title="Delete"
                                             onConfirm={() => confirm(id, sid, i.id)}
                                             onCancel={cancel}
-                                            okText="Да"
-                                            cancelText="Нет"
+                                            okText="Yes"
+                                            cancelText="No"
                                         >
-                                            <Button> Удалить</Button>
+                                            <Button> Delete</Button>
                                         </Popconfirm>
 
                                         </>
                                     }
                                 >
-                                    Ключ: { isChangingKey[1] && isChangingKey[0] === i.id ? <>
+                                    Key: { isChangingKey[1] && isChangingKey[0] === i.id ? <>
                                         <TextArea  autoSize onChange={e => setNewTitle(e.target.value) } value={newTitle} style={{ width: 200, height:100 }}  />
                                         <Button onClick={() => setIsChangingKey([0, false])}>x</Button>
                                         <Button onClick={() => {
@@ -109,7 +109,7 @@ function Keys() {
                                     </> : i.content_key.split('\n').map(k => <p>{k}</p>)}
 
 
-                                    <p>{`Дата: ${i.created_at.split('.')[0]}`}</p>
+                                    <p>{`Created at: ${i.created_at.split('.')[0]}`}</p>
                                 </Card>
                             </Col>
                             <Col span={8}>

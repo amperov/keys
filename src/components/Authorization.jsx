@@ -30,12 +30,12 @@ function Authorization() {
                     <Card
                         style={{ width: '100%' }}
                         title={'Вход'}
-                        extra={<Link to={`/signup`}>Регистрация</Link>}
+                        extra={<Link to={`/signup`}>Sign up</Link>}
                     >
-                            <Input value={login} onChange={e => setLogin(e.target.value)} style={{ marginBottom: 10 }} placeholder='Логин' />
-                            <Input.Password value={password} onChange={e => setPassword(e.target.value)} placeholder='Пароль' />
+                            <Input value={login} onChange={e => setLogin(e.target.value)} style={{ marginBottom: 10 }} placeholder='login' />
+                            <Input.Password value={password} onChange={e => setPassword(e.target.value)} placeholder='Password' />
 
-                            <Button onClick={() => handleLogin()} style={{ marginTop: 10, marginLeft: '43%' }} type='primary'>Войти</Button>
+                            <Button onClick={() => handleLogin()} style={{ marginTop: 10, marginLeft: '43%' }} type='primary'>Log in</Button>
                     </Card>
                 </Col>
                 <Col span={8}>

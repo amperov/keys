@@ -83,7 +83,7 @@ function Product() {
                         </Card>
                     </Col>
                     <Col span={8}>
-                        <Link to="/"><Button>Назад</Button></Link>
+                        <Link to="/"><Button>Go back</Button></Link>
                     </Col> 
                 </Row>
 
@@ -94,22 +94,22 @@ function Product() {
                             <Col span={8}>
                             </Col>
                             <Col span={8}>
-                                <Input style={{ marginBottom: 10 }} value={nameRu} onChange={e => setNameRu(e.target.value)}  placeholder="Введите наименование на русском" />
-                                <Input style={{ marginBottom: 10 }} value={nameEng} onChange={e => setNameEng(e.target.value)}  placeholder="Введите наименование на английском" />
-                                <Input style={{marginBottom: 10}} value={digiid} onChange={e => setDigiid(e.target.value)}  placeholder="Введите айди для предпроверки" />
-                                <Input style={{ marginBottom: 10 }} value={subtypeValue} onChange={e => setSubtypeValue(e.target.value)}  placeholder="Введите значение номинала" />
+                                {/*<Input style={{ marginBottom: 10 }} value={nameRu} onChange={e => setNameRu(e.target.value)}  placeholder="Введите наименование на русском" />*/}
+                                <Input style={{ marginBottom: 10 }} value={nameEng} onChange={e => setNameEng(e.target.value)}  placeholder="Insert Title on english" />
+                                <Input style={{marginBottom: 10}} value={digiid} onChange={e => setDigiid(e.target.value)}  placeholder="Insert ID for Precheck" />
+                                <Input style={{ marginBottom: 10 }} value={subtypeValue} onChange={e => setSubtypeValue(e.target.value)}  placeholder="Insert Cost of Nominal" />
                                 {
                                     isComposite ?
                                         <div>
-                                            <Input style={{ marginBottom: 10 }} value={partialValues} onChange={e => setPartialValues(e.target.value)}  placeholder={"Введите частичные значение"} />
+                                            <Input style={{ marginBottom: 10 }} value={partialValues} onChange={e => setPartialValues(e.target.value)}  placeholder={"Insert partial values"} />
 
-                                            <Radio checked={true} value={isComposite} onClick={() => setIsComposite(false)}>Составной товар</Radio>
+                                            <Radio checked={true} value={isComposite} onClick={() => setIsComposite(false)}>Is Composite</Radio>
                                         </div>
-                                            : <Checkbox  value={isComposite} onClick={() => setIsComposite(!isComposite)}>Составной товар</Checkbox>
+                                            : <Checkbox  value={isComposite} onClick={() => setIsComposite(!isComposite)}>Is Composite</Checkbox>
                                 }
 
-                                <Button style={{ marginTop: 10, marginRight: 10 }} onClick={handleAddSubtype} type="primary">Добавить</Button>
-                                <Button type="primary" danger onClick={handleStopAdding}>Отмена</Button>
+                                <Button style={{ marginTop: 10, marginRight: 10 }} onClick={handleAddSubtype} type="primary">Add Nominal</Button>
+                                <Button type="primary" danger onClick={handleStopAdding}>Cancel</Button>
                                 
                             </Col>
                             <Col span={8}>
@@ -122,7 +122,7 @@ function Product() {
                         <Col span={8}>
                         </Col>
                         <Col span={8}>
-                            <Button type="primary" block onClick={handleStartAdding}>Добавить</Button>
+                            <Button type="primary" block onClick={handleStartAdding}>Add</Button>
                         </Col>
                         <Col span={8}>
                         </Col> 
@@ -139,28 +139,28 @@ function Product() {
                             <Col span={16}>
                                 <Card
                                     style={{ width: '100%' }}
-                                    title={`Подкатегория: ${i.title_ru}`}
+                                    title={`Subcategory: ${i.title_ru}`}
                                     extra={
                                         <>
                                             {/*Кнопки*/}
                                             { (isChangingName[1] & (isChangingName[0] === i.id)) ? 
                                                 <Button onClick={() => {
                                                     setIsChangingName(false)
-                                                }} danger style={{ marginRight: 10 }}>Отмена</Button>
+                                                }} danger style={{ marginRight: 10 }}>Cancel</Button>
                                             :
                                                 <Button onClick={() => {
                                                     setIsChangingName([i.id, true])
-                                                }} danger style={{ marginRight: 10 }}>Изменить</Button>
+                                                }} danger style={{ marginRight: 10 }}>Update</Button>
                                             }
 
                                                 <Popconfirm
-                                                    title="Удалить"
+                                                    title="Delete"
                                                     onConfirm={() => confirm(i.id)}
                                                     onCancel={cancel}
-                                                    okText="Да"
-                                                    cancelText="Нет">
+                                                    okText="Yes"
+                                                    cancelText="No">
                                                     <Button danger style={{ marginRight: 10 }}>
-                                                        Удалить
+                                                        Delete
                                                     </Button>
                                                 </Popconfirm>
                                                 {!i.is_composite ?<Link to={`/${id}/keys/${i.id}`}>Перейти</Link>:<></>}
@@ -168,27 +168,27 @@ function Product() {
                                         </>}>
                                     <Row>
                                         <Col span={12}>
-                                            <p style={{marginTop:0}}>Название (RU): {isChangingName[1] & isChangingName[0] === i.id ?
+                                            {/*<p style={{marginTop:0}}>Название (RU): {isChangingName[1] & isChangingName[0] === i.id ?
                                                 <Input  placeholder={i.title_ru} onClick={(e) => setNewNameRU(i.title_ru)} onChange={(e) => setNewNameRU(e.target.value)} value={newNameRU}
                                                        style={{ width: 150, margin:0, marginLeft: 60  }} /> : i.title_ru}
-                                            </p>
-                                            <p style={{marginTop:0}}>Название (EN): {isChangingName[1] & isChangingName[0] === i.id ?
+                                            </p>*/}
+                                            <p style={{marginTop:0}}>Title (EN): {isChangingName[1] & isChangingName[0] === i.id ?
                                                 <Input onClick={(e) => setNewNameEn(i.title_eng)} placeholder={i.title_eng} onChange={(e) => setNewNameEn(e.target.value)} value={newNameEn} style={{ width: 150, margin: 0, marginLeft: 60 }} /> : i.title_eng}
                                             </p>
-                                            <p style={{marginTop:0}}>Айди для предпроверки: {isChangingName[1] & isChangingName[0] === i.id ?
+                                            <p style={{marginTop:0}}>ID for precheck: {isChangingName[1] & isChangingName[0] === i.id ?
                                                 <Input  onClick={(e) => setNewSubitemId(i.subitem_id)} placeholder={i.subitem_id} onChange={(e) => setNewSubitemId(e.target.value)} value={newSubitemId} style={{ width: 150 }} /> : i.subitem_id}
                                             </p>
                                             <div id={"1"}>
-                                                <p style={{marginTop:0}}>Составные номиналы: {isChangingName[1] & isChangingName[0] === i.id ?
+                                                <p style={{marginTop:0}}>Partial Nominals: {isChangingName[1] & isChangingName[0] === i.id ?
                                                     <Input onClick={(e) => setPartialValues(i.partial_values)} placeholder={i.subitem_id} onChange={(e) => setPartialValues(e.target.value)} value={partialValues} style={{ width: 150, marginLeft: 15 }} /> :
-                                                    `${i.partial_values === "" ? "Отсутствуют" : i.partial_values}`}
+                                                    `${i.partial_values === "" ? "None" : i.partial_values}`}
                                                 </p>
-                                                <p style={{marginTop:0}}>Ценность номинала: {isChangingName[1] & isChangingName[0] === i.id ?
+                                                <p style={{marginTop:0}}>Cost of nominal: {isChangingName[1] & isChangingName[0] === i.id ?
                                                     <Input onClick={(e) => setSubtypeValue(i.subtype_value)} onChange={(e) => setSubtypeValue(e.target.value)} value={subtypeValue} style={{ width: 150, marginLeft: 25 }} /> : i.subtype_value}
                                                 </p>
                                             </div>
-                                            <p style={{marginTop:0}}>Составной товар: {isChangingName[1] & isChangingName[0] === i.id ?
-                                                <Checkbox onClick={() => {setIsComposite(!isComposite);}} value={isComposite} checked={isComposite} style={{ width: 150, marginLeft: 30 }} /> : `${i.is_composite ? "Да" : "Нет"}`}
+                                            <p style={{marginTop:0}}>Is composite: {isChangingName[1] & isChangingName[0] === i.id ?
+                                                <Checkbox onClick={() => {setIsComposite(!isComposite);}} value={isComposite} checked={isComposite} style={{ width: 150, marginLeft: 30 }} /> : `${i.is_composite}`}
                                             </p>
 
 
@@ -209,10 +209,10 @@ function Product() {
                                         </Col>
                                         <Col span={4}>
                                             {!i.is_composite ?
-                                                <b>Ключи: {i.count_products}</b>
+                                                <b>Keys: {i.count_products}</b>
                                                 : <></>
                                             }
-                                            <p>{`Дата: ${i.created_at.split('.')[0]}`}</p>
+                                            <p>{`Created at: ${i.created_at.split('.')[0]}`}</p>
                                         </Col>
                                     </Row>
                                 </Card>

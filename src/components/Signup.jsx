@@ -27,15 +27,15 @@ function Signup() {
                 <Col span={8}>
                     <Card
                         style={{ width: '100%' }}
-                        title={'Регистрация'}
-                        extra={<Link to={`/`}>Вход</Link>}
+                        title={'Sign up'}
+                        extra={<Link to={`/`}>Sign In</Link>}
                     >
-                            <Input value={login} onChange={e => setLogin(e.target.value)} style={{ marginBottom: 10 }} placeholder='Логин' />
-                            <Input.Password value={password} onChange={e => setPassword(e.target.value)} style={{ marginBottom: 30 }} placeholder='Пароль' />
-                            <Input value={seller_id} onChange={e => setSeller_id(e.target.value)} style={{ marginBottom: 10 }} placeholder='seller_id' />
-                            <Input value={seller_key} onChange={e => setSeller_key(e.target.value)} style={{ marginBottom: 10 }} placeholder='seller_key' />
+                            <Input value={login} onChange={e => setLogin(e.target.value)} style={{ marginBottom: 10 }} placeholder='Login' />
+                            <Input.Password value={password} onChange={e => setPassword(e.target.value)} style={{ marginBottom: 30 }} placeholder='Password' />
+                            <Input value={seller_id} onChange={e => setSeller_id(e.target.value)} style={{ marginBottom: 10 }} placeholder='Seller ID' />
+                            <Input value={seller_key} onChange={e => setSeller_key(e.target.value)} style={{ marginBottom: 10 }} placeholder='Seller API Key' />
 
-                            <Button onClick={handleSignup} style={{ marginTop: 10, marginLeft: '36%' }} type='primary'>Зарегистрироваться</Button>
+                            <Button onClick={handleSignup} style={{ marginTop: 10, marginLeft: '36%' }} type='primary'>Sign up</Button>
                     </Card>
                 </Col>
                 <Col span={8}>
