@@ -79,7 +79,7 @@ function Product() {
                             style={{ width: '100%' }}
                             title={title}
                         >
-                            <p>{`Количество подтипов: ${subtypes ? subtypes.length : 0}`}</p>
+                            <p>{`Count of subcategories: ${subtypes ? subtypes.length : 0}`}</p>
                         </Card>
                     </Col>
                     <Col span={8}>
@@ -163,7 +163,7 @@ function Product() {
                                                         Delete
                                                     </Button>
                                                 </Popconfirm>
-                                                {!i.is_composite ?<Link to={`/${id}/keys/${i.id}`}>Перейти</Link>:<></>}
+                                                {!i.is_composite ?<Link to={`/${id}/keys/${i.id}`}>Go to</Link>:<></>}
 
                                         </>}>
                                     <Row>

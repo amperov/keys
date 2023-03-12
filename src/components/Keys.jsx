@@ -50,7 +50,7 @@ function Keys() {
                             isAddingKeys ? 
                                 <>
                                     <TextArea value={content} onChange={e => setContent(e.target.value)} style={{ marginTop: 10, height:100 }} placeholder="Insert Keys" />
-                                    <Button onClick={() => setIsAddingKeys(false)} style={{ marginRight: 10, marginTop: 10 }}>Отмена</Button>
+                                    <Button onClick={() => setIsAddingKeys(false)} style={{ marginRight: 10, marginTop: 10 }}>Cancel</Button>
                                     <Button  onClick={() => {
                                         console.log(content)
                                         Api.post(`/seller/category/${id}/subcategory/${sid}/${howManyKeys}`, { content: content } ).then(r => console.log(r.data))

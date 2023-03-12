@@ -70,8 +70,8 @@ function Main() {
                                 <>
                                     {/*Название (RU)<Input value={nameRU} onChange={e => setNameRU(e.target.value)}  style={{ marginBottom: 10 }} placeholder="Введите наименование на русском" />*/}
                                     Title: <Input value={nameENG} onChange={e => setNameENG(e.target.value)}  style={{ marginBottom: 10 }} placeholder="Insert Title" />
-                                    Описание <Input value={description} onChange={e => setDescription(e.target.value)}  style={{ marginBottom: 10 }} placeholder="Insert Description (only for ur understanding in future)" />
-                                    Сообщение: <TextArea value={message} onChange={e => setMessage(e.target.value)}  onPressEnter={ message + "\n"} style={{ marginBottom: 10, height: 100 }} placeholder="Insert message" />
+                                    Description <Input value={description} onChange={e => setDescription(e.target.value)}  style={{ marginBottom: 10 }} placeholder="Insert Description (only for ur understanding in future)" />
+                                    Message: <TextArea value={message} onChange={e => setMessage(e.target.value)}  onPressEnter={ message + "\n"} style={{ marginBottom: 10, height: 100 }} placeholder="Insert message" />
                                     {/*<Input value={itemId} onChange={e => setItemId(e.target.value)}  style={{ marginBottom: 10 }} placeholder="Введите id товара" />*/}
                                     <Button style={{ marginTop: 10, marginRight: 10 }} onClick={handleAddProduct} type="primary">Add</Button>
                                     <Button type="primary" danger onClick={handleStopAdding}>Отмена</Button></> : <Button type="primary" block onClick={handleStartAdding}>Add</Button> }
