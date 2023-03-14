@@ -41,7 +41,7 @@ function Transaction() {
                                     </Button></>  : <> { transaction.content_key}</>}
 
                             <Button onClick={() => isChangingKey ? handleChangeKey() : setIsChangingKey(true)} style={{ marginLeft: 110, marginRight: 10 }} type="primary">
-                                Изменить ключ
+                                Update Key
                             </Button>
                         <p>Category: {transaction.category_name}</p>
                         <p>Subcategory: {transaction.subcategory_name}</p>

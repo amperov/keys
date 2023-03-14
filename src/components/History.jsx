@@ -33,9 +33,9 @@ function History() {
                             <Row gutter={13}>
                                 <Col span={8}>
                                     <p style={{fontSize: 16}}> Subcategory: {i.subcategory_name}</p>
-                                    <p style={{fontSize: 16}}> Уникальный код: {i.unique_code}</p>
-                                    <p style={{fontSize: 16}}> Цена: {i.amount}₽ </p>
-                                    <p style={{fontSize: 16}}> Ключ был добавлен: {i.created_at.split('.')[0]}</p>
+                                    <p style={{fontSize: 16}}> Unique Code: {i.unique_code}</p>
+                                    <p style={{fontSize: 16}}> Cost: {i.amount}$ </p>
+                                    <p style={{fontSize: 16}}> Key was added: {i.created_at.split('.')[0]}</p>
                                 </Col>
                                 <Col span={8}>
                                     <p style={{fontSize: 16,
