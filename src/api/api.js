@@ -1,7 +1,7 @@
 import axios from "axios"
 // const https = require('https')
 
-const baseURL = 'http://212.57.126.34:8080/api'
+const baseURL = 'https://digi-market.ru/api'
 
 
 const token = localStorage.getItem('jwt')
