@@ -22,6 +22,7 @@ function App() {
       Api.get('seller/me').then(r => setIsAuthorized(true)).catch(e => {
         setIsAuthorized(false)
         localStorage.removeItem('jwt')
+        window.location.href = '/';
       })
 
     } else {
