@@ -38,7 +38,7 @@ function ClientDesktop() {
 
                          <br/></div>
                 } else {
-                    return <p style={{display: "inline"}}> {item1} </p>
+                    return <p style={{display: "inline", fontSize: "20px"}}> {item1} </p>
                 }
             })
 
@@ -59,19 +59,20 @@ function ClientDesktop() {
                         <Card style={{ width: '100%', backgroundColor: '#8facb9', boxSizing: "content-box", height: "100%" }}>
 
 
-                                    <Row>
+                                    <Row >
                                         { product.keys ? product.keys.map(i => <>
-                                            <Col span={12} >
-                                                <p style={{fontSize:20, color: "white"}}>Уникальный код: {i.unique_code}</p>
+                                            <Col span={6}  style={{border:"2px dashed", textAlign: "center", borderRadius: "12px"}}>
+                                                <p style={{fontSize:19, color: "white"}}>Информация по заказу:</p>
+                                                <p style={{fontSize:16, color: "white"}}>Уникальный код: {i.unique_code}</p>
                                                 <p style={{fontSize:16, color: "white"}}>Продукт: {i.category_name}  </p>
                                                 <p style={{fontSize:16, color: "white"}}>Подтип: {i.subcategory_name}</p>
                                                 <p style={{fontSize:16, color: "white"}}>Количество: {i.count}</p>
                                                 <p style={{fontSize:16, color: "white"}}>Email: {i.client_email}</p>
                                                 <p style={{ fontSize: 16, color: "white" }}>{`Дата: ${i.date_check}`} </p>
                                             </Col>
-
-                                            <Col span={12} style={{marginTop:10, border: "2px dashed", display:"block", borderRadius: "12px", padding: 10}}>
-                                                <p style={{fontSize: 16, margin: "auto", color: "white"}} > Ключи: <br/>{setLinks()} </p>
+                                            <Col span={1}></Col>
+                                            <Col span={17} style={{ border: "2px dashed", display:"block", borderRadius: "12px", padding: 10}}>
+                                                <p style={{fontSize: 25, margin: "auto", color: "white"}} > Ключи: <br/>{setLinks()} </p>
                                             </Col>
 
                                         </>) : <></> }
